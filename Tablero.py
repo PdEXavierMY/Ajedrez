@@ -23,8 +23,19 @@ peones_blancos = {
     'p2' : "peón blanco",
     }
 
-def desplegar_tablero(tablero):
+def desplegar_tablero():
     for i in tablero:
         print(i)
-lista = list(figuras_negras)
-print(lista)
+
+fichas_negras = list(figuras_negras)
+fichas_blancas = list(figuras_blancas)
+peon_negro = list(peones_negros)
+peon_blanco = list(peones_blancos)
+tablero = [[], [], [], [], [], [], [], []]
+tablero[0] = tablero[0] + fichas_negras
+tablero[7] = tablero[7] + fichas_blancas
+for i in range(8):
+    tablero[1] += peon_negro
+    tablero[6] += peon_blanco
+
+desplegar_tablero()
