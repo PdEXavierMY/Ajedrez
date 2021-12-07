@@ -41,5 +41,18 @@ desplegar_tablero()
 
 #Partimos suponiendo que conocemos las reglas del juego y sabemos que se puede y que no se puede hacer
 
-def jugar():
-    print("Mas codigo")
+def mover_acabar():
+    partida1 = True
+    partida2 = True
+    partida = True
+    decision1 = input("Jugador 1, ¿Quiere mover ficha(escriba 1) o terminar la partida(escriba 2)?")
+    if decision1 == 2:
+        partida1 = False
+        decision2 =  input("Jugador 2, ¿Quiere mover ficha(escriba 1) o terminar la partida(escriba 2)?")
+        if decision2 == 2:
+            partida2 = False
+            partida = False
+    return partida
+
+def jugar_una_ronda():
+    print("Jugador 1, ¿Quiere mover ficha o ?")
