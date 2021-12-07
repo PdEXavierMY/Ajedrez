@@ -38,3 +38,8 @@ for i in range(8):
     tablero[6] += peon_blanco
 
 desplegar_tablero()
+
+#Partimos suponiendo que conocemos las reglas del juego y sabemos que se puede y que no se puede hacer
+
+def jugar():
+    print("Mas codigo")
