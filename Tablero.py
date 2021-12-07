@@ -63,7 +63,7 @@ def mover_ficha():
         for j in range(8):
             if posicion == [i, j]:
                 simbolo = tablero[ficha]
-                tablero[i][j] = ficha
+                tablero[i][j] = simbolo
                 tablero[ficha] = "  "
 
 def jugar_una_ronda():
