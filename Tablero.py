@@ -16,7 +16,6 @@ figuras_blancas = {
     'a2' : "alfil blanca",
     'k2' : "rey blanca",
     'q2' : "reina blanca",
-    'p2' : "peón blanco",
     }
 
 peones_blancos = {
@@ -31,9 +30,9 @@ fichas_negras = list(figuras_negras)
 fichas_blancas = list(figuras_blancas)
 peon_negro = list(peones_negros)
 peon_blanco = list(peones_blancos)
-tablero = [[], [], [], [], [], [], [], []]
-tablero[0] = tablero[0] + fichas_negras
-tablero[7] = tablero[7] + fichas_blancas
+tablero = [[], [], ["", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", ""], [], []]
+tablero[0] = tablero[0] + fichas_negras + [fichas_negras[2]] + [fichas_negras[1]] + [fichas_negras[0]]
+tablero[7] = tablero[7] + fichas_blancas + [fichas_blancas[2]] + [fichas_blancas[1]] + [fichas_blancas[0]]
 for i in range(8):
     tablero[1] += peon_negro
     tablero[6] += peon_blanco
