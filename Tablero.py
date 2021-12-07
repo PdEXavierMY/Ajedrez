@@ -57,4 +57,10 @@ def mover_acabar2():
     return partida2
 
 def jugar_una_ronda():
-    mover_acabar1()
+    j1 = mover_acabar1()
+    if j1 == True:
+    else:
+        j2 = mover_acabar2()
+        if j2 == True:
+        else:
+            print("Gracias por jugar")
