@@ -37,22 +37,24 @@ for i in range(8):
     tablero[1] += peon_negro
     tablero[6] += peon_blanco
 
+print("El significado de cada símbolo es el siguiente" + figuras_negras + peones_negros + figuras_blancas + peones_blancos)
 desplegar_tablero()
 
 #Partimos suponiendo que conocemos las reglas del juego y sabemos que se puede y que no se puede hacer
 
-def mover_acabar():
+def mover_acabar1():
     partida1 = True
-    partida2 = True
-    partida = True
     decision1 = input("Jugador 1, ¿Quiere mover ficha(escriba 1) o terminar la partida(escriba 2)?")
     if decision1 == 2:
         partida1 = False
-        decision2 =  input("Jugador 2, ¿Quiere mover ficha(escriba 1) o terminar la partida(escriba 2)?")
-        if decision2 == 2:
-            partida2 = False
-            partida = False
-    return partida
+    return partida1
+
+def mover_acabar2():
+    partida2 = True
+    decision2 = input("Jugador 2, ¿Quiere mover ficha(escriba 1) o terminar la partida(escriba 2)?")
+    if decision2 == 2:
+        partida2 = False
+    return partida2
 
 def jugar_una_ronda():
-    print("Jugador 1, ¿Quiere mover ficha o ?")
+    mover_acabar1()
