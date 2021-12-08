@@ -21,11 +21,11 @@ tablero = [["t1", "c1", "a1", "k1", "q1", "a1", "c1", "t1"], ["p1", "p1", "p1", 
 #Partimos suponiendo que conocemos las reglas del juego y sabemos que se puede y que no se puede hacer
 
 def mover_acabar():
-    partida = True
-    decision = input("¿Quiere mover ficha(escriba 1) o terminar la partida(escriba 2)?")
+    decision = input("¿Quiere mover ficha(escriba 1) o terminar la partida(escriba 2)? ")
     if decision == 2:
-        partida = False
-    return partida
+        return False
+    else:
+        return True
 
 def mover_ficha():
     ficha = list(map(int, input("Eliga la ficha que quiere mover(usando las coordenadas): ").rstrip().split()))
@@ -34,14 +34,14 @@ def mover_ficha():
         for j in range(8):
             if [i, j] == posicion:
                 simbolo = tablero[ficha[0]][ficha[1]]
-                tablero[i][j] = simbolo
                 tablero[ficha[0]][ficha[1]] = "  "
+                tablero[i][j] = simbolo
     return tablero
 
 def jugar_una_ronda(juego):
     print("Jugador 1: ", end = "")
-    j1 = mover_acabar()
-    if j1 == True:
+    jugador1 = mover_acabar()
+    if jugador1 == True:
         print("Jugador 1:")
         mover_ficha()
         desplegar_tablero()
@@ -50,8 +50,8 @@ def jugar_una_ronda(juego):
         desplegar_tablero()
     else:
         print("Jugador 2: ", end = "")
-        j2 = mover_acabar()
-        if j2 == True:
+        jugador2 = mover_acabar()
+        if jugador2 == True:
             print("Jugador 1, debe mover ficha:")
             mover_ficha()
             desplegar_tablero()
@@ -68,7 +68,7 @@ def jugar():
     print("A continuación se desplegará el tablero.")
     print("Para mover ficha o referirse a una casilla deberán indicarla con coordenadas, leyendo el tablero de arriba a abajo, de izquierda a derecha, siendo la primera la casilla 0, 0, la segunda la 0, 1 y así hasta la 7, 7")
     desplegar_tablero()
-    print("El significado de cada símbolo es el siguiente" + str(figuras))
+    print("El significado de cada símbolo es el siguiente " + str(figuras))
     juego = True
     while juego:
         jugar_una_ronda(juego)
