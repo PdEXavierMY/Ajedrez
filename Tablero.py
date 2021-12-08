@@ -65,12 +65,38 @@ def mover_ficha():
                 simbolo = tablero[ficha[0]][ficha[1]]
                 tablero[i][j] = simbolo
                 tablero[ficha[0]][ficha[1]] = "  "
+    return tablero
 
-def jugar_una_ronda():
+def jugar_una_ronda(juego):
     j1 = mover_acabar1()
     if j1 == True:
+        print("Jugador 1:")
+        mover_ficha()
+        desplegar_tablero()
+        print("Jugador 2:")
+        mover_ficha()
+        desplegar_tablero()
     else:
         j2 = mover_acabar2()
         if j2 == True:
+            print("Jugador 1, debe mover ficha:")
+            mover_ficha()
+            desplegar_tablero()
+            print("Jugador 2:")
+            mover_ficha()
+            desplegar_tablero()
         else:
             print("Gracias por jugar")
+            juego = False
+    return tablero
+
+def jugar():
+    print("Vamos a jugar al ajedrez")
+    print("A continuación se desplegará el tablero")
+    print("Para mover ficha o referirse a una casilla deberán indicarla con coordenadas, leyendo el tablero de arriba a abajo, de izquierda a derecha, siendo la primera la casilla 0, 0, la segunda la 0, 1 y así hasta la 7, 7")
+    juego = True
+    while juego:
+        jugar_una_ronda(juego)
+
+if __name__ == "__main__":
+    jugar()
