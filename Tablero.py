@@ -37,7 +37,7 @@ for i in range(8):
     tablero[1] += peon_negro
     tablero[6] += peon_blanco
 
-print("El significado de cada símbolo es el siguiente" + figuras_negras + peones_negros + figuras_blancas + peones_blancos)
+print("El significado de cada símbolo es el siguiente" + str(figuras_negras) + str(peones_negros) + str(figuras_blancas) + str(peones_blancos))
 desplegar_tablero()
 
 #Partimos suponiendo que conocemos las reglas del juego y sabemos que se puede y que no se puede hacer
