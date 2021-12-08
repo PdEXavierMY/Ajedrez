@@ -57,14 +57,14 @@ def mover_acabar2():
     return partida2
 
 def mover_ficha():
-    ficha = input("Eliga la ficha que quiere mover(usando las coordenadas): ")
-    posicion = input("Eliga la posición a la que la quiere mover(usando las coordenadas): ")
+    ficha = list(map(int, input("Eliga la ficha que quiere mover(usando las coordenadas): ").rstrip().split()))
+    posicion = list(map(int, input("Eliga la posición a la que la quiere mover(usando las coordenadas): ").rstrip().split()))
     for i in range(8):
         for j in range(8):
-            if posicion == [i, j]:
-                simbolo = tablero[ficha]
+            if [i, j] == posicion:
+                simbolo = tablero[ficha[0]][ficha[1]]
                 tablero[i][j] = simbolo
-                tablero[ficha] = "  "
+                tablero[ficha[0]][ficha[1]] = "  "
 
 def jugar_una_ronda():
     j1 = mover_acabar1()
