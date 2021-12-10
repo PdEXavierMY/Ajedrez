@@ -40,7 +40,7 @@ def mover_ficha():
         for j in range(8):
             if [i, j] == posicion:
                 simbolo = tablero[ficha[0]][ficha[1]]
-                tablero[ficha[0]][ficha[1]] = "  "
+                tablero[ficha[0]][ficha[1]] = " "
                 tablero[i][j] = simbolo
     return tablero
 
@@ -77,6 +77,7 @@ def jugar():
     desplegar_tablero()
     print("El significado de cada símbolo es el siguiente " + str(figuras))
     texto = open(input("Eliga el nombre del fichero en el que guardar los tableros: "), "w")
+    texto.write("Hola" + os.linesep)
     while jugar_una_ronda() != False:
         jugar_una_ronda()
         texto.write(str(tablero) + os.linesep)
