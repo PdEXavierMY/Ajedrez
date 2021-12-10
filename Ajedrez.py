@@ -77,10 +77,10 @@ def jugar():
     desplegar_tablero()
     print("El significado de cada símbolo es el siguiente " + str(figuras))
     texto = open(input("Eliga el nombre del fichero en el que guardar los tableros: "), "w")
-    texto.write("Hola" + os.linesep)
-    while jugar_una_ronda() != False:
-        jugar_una_ronda()
-        texto.write(str(tablero) + os.linesep)
+    boolean = True
+    while boolean != False:
+        texto.write("Hola")
+        boolean = jugar_una_ronda()
     texto.close()
 
 if __name__ == "__main__":
