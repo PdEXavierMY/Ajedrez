@@ -1,16 +1,19 @@
+import os
+
 figuras = {
-    't1' : "torre negro",
-    'c1' : "caballo negro",
-    'a1' : "alfil negro",
-    'k1' : "rey negro",
-    'q1' : "reina negro",
-    'p1' : "peón negro",
-    't2' : "torre blanca",
-    'c2' : "caballo blanca",
-    'a2' : "alfil blanca",
-    'k2' : "rey blanca",
-    'q2' : "reina blanca",
-    'p2' : "peón blanco",
+    't1' : chr(0x265C),
+    'c1' : chr(0x265E),
+    'a1' : chr(0x265D),
+    'k1' : chr(0x265A),
+    'q1' : chr(0x265B),
+    'p1' : chr(0x265F),
+    't2' : chr(0x2656),
+    'c2' : chr(0x2658),
+    'a2' : chr(0x2657),
+    'k2' : chr(0x2655),
+    'q2' : chr(0x2655),
+    'p2' : chr(0x2659),
+    "  " : " "
     }
 
 def desplegar_tablero():
@@ -18,6 +21,9 @@ def desplegar_tablero():
         print(i)
 
 tablero = [["t1", "c1", "a1", "k1", "q1", "a1", "c1", "t1"], ["p1", "p1", "p1", "p1", "p1", "p1", "p1", "p1"], ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "], ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "], ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "], ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "], ["p2", "p2", "p2", "p2", "p2", "p2", "p2", "p2"], ["t2", "c2", "a2", "k2", "q2", "a2", "c2", "t2"]]
+for i in range(8):
+    for j in range(8):
+        tablero[i][j] = figuras.setdefault(tablero[i][j])
 #Partimos suponiendo que conocemos las reglas del juego y sabemos que se puede y que no se puede hacer
 
 def mover_acabar():
@@ -38,7 +44,7 @@ def mover_ficha():
                 tablero[i][j] = simbolo
     return tablero
 
-def jugar_una_ronda(juego):
+def jugar_una_ronda():
     print("Jugador 1: ", end = "")
     jugador1 = mover_acabar()
     if jugador1 == True:
@@ -48,6 +54,7 @@ def jugar_una_ronda(juego):
         print("Jugador 2:")
         mover_ficha()
         desplegar_tablero()
+        return tablero
     else:
         print("Jugador 2: ", end = "")
         jugador2 = mover_acabar()
@@ -58,10 +65,10 @@ def jugar_una_ronda(juego):
             print("Jugador 2:")
             mover_ficha()
             desplegar_tablero()
+            return tablero
         else:
             print("Gracias por jugar")
-            juego = False
-    return tablero and juego
+            return False
 
 def jugar():
     print("Vamos a jugar al ajedrez.")
@@ -69,9 +76,11 @@ def jugar():
     print("Para mover ficha o referirse a una casilla deberán indicarla con coordenadas, leyendo el tablero de arriba a abajo, de izquierda a derecha, siendo la primera la casilla 0, 0, la segunda la 0, 1 y así hasta la 7, 7")
     desplegar_tablero()
     print("El significado de cada símbolo es el siguiente " + str(figuras))
-    juego = True
-    while juego:
-        jugar_una_ronda(juego)
+    texto = open(input("Eliga el nombre del fichero en el que guardar los tableros: "), "w")
+    while jugar_una_ronda() != False:
+        jugar_una_ronda()
+        texto.write(str(tablero) + os.linesep)
+    texto.close()
 
 if __name__ == "__main__":
     jugar()
