@@ -21,9 +21,11 @@ def desplegar_tablero():
         print(i)
 
 tablero = [["t1", "c1", "a1", "k1", "q1", "a1", "c1", "t1"], ["p1", "p1", "p1", "p1", "p1", "p1", "p1", "p1"], ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "], ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "], ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "], ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "], ["p2", "p2", "p2", "p2", "p2", "p2", "p2", "p2"], ["t2", "c2", "a2", "k2", "q2", "a2", "c2", "t2"]]
-for i in range(8):
-    for j in range(8):
-        tablero[i][j] = figuras.setdefault(tablero[i][j])
+def convertir_tablero():
+    for i in range(8):
+        for j in range(8):
+            tablero[i][j] = figuras.setdefault(tablero[i][j])
+convertir_tablero()
 #Partimos suponiendo que conocemos las reglas del juego y sabemos que se puede y que no se puede hacer
 
 def mover_acabar():
@@ -79,7 +81,7 @@ def jugar():
     texto = open(input("Eliga el nombre del fichero en el que guardar los tableros: "), "w")
     boolean = True
     while boolean != False:
-        texto.write("Hola")
+        texto.write(str(tablero))
         boolean = jugar_una_ronda()
     texto.close()
 
