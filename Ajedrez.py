@@ -16,6 +16,22 @@ figuras = {
     "  " : " "
     }
 
+significados = {
+    chr(0x265C) : "t1",
+    chr(0x265E) : "c1",
+    chr(0x265D) : "a1",
+    chr(0x265A) : "k1",
+    chr(0x265B) : "q1",
+    chr(0x265F) : "p1",
+    chr(0x2656) : "t2",
+    chr(0x2658) : "c2",
+    chr(0x2657) : "a2",
+    chr(0x2655) : "k2",
+    chr(0x2655) : "q2",
+    chr(0x2659) : "p2",
+    " " : "  "
+    }
+
 def desplegar_tablero():
     for i in tablero:
         print(i)
@@ -25,8 +41,14 @@ def convertir_tablero():
     for i in range(8):
         for j in range(8):
             tablero[i][j] = figuras.setdefault(tablero[i][j])
-convertir_tablero()
 #Partimos suponiendo que conocemos las reglas del juego y sabemos que se puede y que no se puede hacer
+
+def revertir_tablero():
+    for i in range(8):
+        for j in range(8):
+            tablero[i][j] = significados.setdefault(tablero[i][j])
+#Por cualquier razón no puedo introducir en el documento de texto creado los símbolos del ajedrez con código,
+#por eso revierto el tablero y guardo un archivo con las letras que representan a cada figura.
 
 def mover_acabar():
     decision = int(input("¿Quiere mover ficha(escriba 1) o terminar la partida(escriba 2)? "))
@@ -73,6 +95,7 @@ def jugar_una_ronda():
             return False
 
 def jugar():
+    convertir_tablero()
     print("Vamos a jugar al ajedrez.")
     print("A continuación se desplegará el tablero.")
     print("Para mover ficha o referirse a una casilla deberán indicarla con coordenadas, leyendo el tablero de arriba a abajo, de izquierda a derecha, siendo la primera la casilla 0, 0, la segunda la 0, 1 y así hasta la 7, 7")
@@ -81,7 +104,11 @@ def jugar():
     texto = open(input("Eliga el nombre del fichero en el que guardar los tableros: "), "w")
     boolean = True
     while boolean != False:
-        texto.write(str(tablero))
+        revertir_tablero()
+        for i in tablero:
+            texto.write(str(i) + '\n')
+        texto.write(os.linesep)
+        convertir_tablero()
         boolean = jugar_una_ronda()
     texto.close()
 
